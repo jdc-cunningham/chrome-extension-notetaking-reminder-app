@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
+const { loginUser, getShortCode } = require('./base_methods');
 
 // CORs
 app.use((req, res, next) => {
@@ -22,9 +23,12 @@ app.use(
 );
 
 // routes
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
   res.status(200).send('online');
 });
+
+app.post('/login-user', loginUser);
+app.post('/get-shortcode', getShortCode);
 
 app.listen(port, () => {
   console.log(`App running... on port ${port}`);

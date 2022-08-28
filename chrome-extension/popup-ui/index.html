@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENRA</title>
+  <link rel="stylesheet" href="cenra-auth-ui.css">
+</head>
+<body>
+  <div class="cenra-auth-ui">
+    <div id="getting-shortcode" class="cenra-auth-ui__checking">
+      <h2>Checking...</h2>
+    </div>
+    <div id="login-form" class="cenra-auth-ui__no-shortcode hidden">
+      <h2>Please login</h2>
+      <input type="text" id="username" placeholder="username"/>
+      <input type="password" id="password" placeholder="password"/>
+      <button type="button" id="login">Login</button>
+    </div>
+    <div id="show-shortcode" class="cenra-auth-ui__has-shortcode hidden">
+      <h2>Your shortcode is</h2>
+      <h3 id="shortcode-text"></h3>
+    </div>
+  </div>
+  <script src="cenra-auth-ui.js"></script>
+</body>
+</html>

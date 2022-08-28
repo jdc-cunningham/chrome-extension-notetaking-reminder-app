@@ -12,3 +12,11 @@ You login to the remote server using the popup ui that appears when clicking the
 
 The point of this app is just note taking but it has information about myself which I don't want random websites to be able to pick up.
 
+### Features
+
+- somehow toggle iFrame transparency in case blocking stuff, be ideal if toggle was on the iframe itself
+
+### Disclaimer/Security vulnerability
+
+It is possible for the iframe to be overlaid by someone else. So they could intercept the iframe interface you're trying to click on/type into. Keep this in mind with iframes in general. This is why the iframe pulsates.
+
