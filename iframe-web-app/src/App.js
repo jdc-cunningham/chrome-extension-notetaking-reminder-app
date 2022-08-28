@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NoteTakingModule from './features/notes/NoteTakingModule' ;
+import SolarChan from './assets/gifs/awake.gif';
+
 import './css-reset.css';
 import './App.css';
 
@@ -30,12 +32,13 @@ const App = () => {
   }, [shortcode]);
 
   return (
-    <div className={`cenra-iframe ${shortcode ? "" : "shortcode"}`}>
+    <div className={`cenra-iframe ${validShortcode ? "" : "shortcode"}`}>
       {!validShortcode && <div className="centra-iframe__shortcode-input">
         <input type="text" onChange={(e) => setShortcode(e.target.value)} placeholder="shortcode"/>
       </div>}
       {validShortcode && <div className="centra-iframe__app">
         <NoteTakingModule/>
+        <img src={SolarChan} alt={"anime-character"} className="centra-iframe__anime-character"/>
       </div>}
     </div>
   );

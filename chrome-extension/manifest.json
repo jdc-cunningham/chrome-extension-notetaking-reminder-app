@@ -6,6 +6,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "exclude_globs": [
+        "*localhost*"
+      ],
       "run_at": "document_start",
       "js": ["iframe-injector.js"],
       "css": ["iframe-website-parent-style-mod.css"]
