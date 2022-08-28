@@ -6,19 +6,21 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "js": ["iframe-injector.js"],
+      "css": ["iframe-website-parent-style-mod.css"]
     }
   ],
   "web_accessible_resources": [
     "auth-page.js"
   ],
   "icons": {
-    "16": "icon16_dark.png",
-    "48": "icon48_dark.png",
-    "128": "icon128_dark.png"
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
   },
   "browser_action": {
-    "default_icon": "icon16_dark.png"
+    "default_icon": "icon_16.png"
   },
   "background": {
     "scripts": ["background.js"]

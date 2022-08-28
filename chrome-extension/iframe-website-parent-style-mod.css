@@ -1,0 +1,29 @@
+body, body * {
+  max-width: 70vw;
+}
+
+iframe#cenra-custom {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(30vw - 16px); /* 8px internal margin */
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: white;
+  z-index: 2147483647; /* lol absolute maximum */
+}
+
+iframe#cenra-custom body {
+  margin: 0;
+}
+
+@media only screen and (min-width: 1920px) {
+  body {
+    max-width: 80vw;
+  }
+
+  iframe#cenra-custom {
+    width: calc(20vw - 16px);
+  }
+}
