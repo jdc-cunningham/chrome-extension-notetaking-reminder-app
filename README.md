@@ -6,11 +6,27 @@ It is an iframe in order to make sure the website can't read the authenticated c
 
 You login through the `background.js` script.
 
-### Usage
+### How does it work?
 
-You login to the remote server using the popup ui that appears when clicking the Chrome extension icon. Then you have a session in your remote server that's active. The issue right now which I have not solved yet is how to get the JWT into the iframe without the parent website being able to get the JWT token... so until I get that setup, I'm using a shortcode. The short code is like a JWT but not... well it's purpose is to prove authentication and its managed on the server side. You would then remember this shortcode probably 6 strings it's 6^62 complexity so that should be good enough. Lasts a day. Paste it into the injected iframe which is injected on every page. It's not ideal but a solution for now. I can't append it to the iframe url because that's public to the parent website.
+There are three parts to this:
 
-The point of this app is just note taking but it has information about myself which I don't want random websites to be able to pick up.
+* chrome extension
+* web app
+* web API
+
+The chrome extension (popup-ui) uses the chrome local storage and teh web API to check for a shortcode.
+
+If you have a shortcode you can then use the injected webapp that's in an iframe. You enter the shortcode into the iframe in order to be in an authenticated state. Then you can use the note taking app tools/search existing notes.
+
+The iframe is injected into every website you visit. It's either on the side or on the bottom depending on the width/aspect ratio of the website.
+
+The downside of this project is that shortcode/persisting it. It persists in the chrome extension icon drop down window but you have to manually put it into the iframe until I figure out a way to bridge that securely without giving the shortcode/JWT to the website the iframe is embedded in.
+
+### Why was this made?
+
+One of the main reasons which was kind of not directly achieved is a reminder... it would just appear on any website. `BOOM!` Injected in your face. Also I can always take notes of whatever random thing I'm looking at.
+
+I had that ability before with the [dropdown version](https://github.com/jdc-cunningham/nanta-chrome-extension) and my other app variants. This way is supposed to be more convenient/is in my face.
 
 ### Features
 
