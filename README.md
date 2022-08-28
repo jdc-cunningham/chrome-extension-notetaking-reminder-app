@@ -6,6 +6,12 @@ It is an iframe in order to make sure the website can't read the authenticated c
 
 You login through the `background.js` script.
 
+<img src="./demo.gif" width="800"/>
+
+#### Workflow diagram
+
+<img src="./workflow.JPG" width="800"/>
+
 ### How does it work?
 
 There are three parts to this:
