@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NoteTakingModule from './features/notes/NoteTakingModule' ;
 import './css-reset.css';
 import './App.css';
 
@@ -34,8 +35,7 @@ const App = () => {
         <input type="text" onChange={(e) => setShortcode(e.target.value)} placeholder="shortcode"/>
       </div>}
       {validShortcode && <div className="centra-iframe__app">
-        <h2>Search notes</h2>
-        <input type="text" placeholder="search notes"/>
+        <NoteTakingModule/>
       </div>}
     </div>
   );
