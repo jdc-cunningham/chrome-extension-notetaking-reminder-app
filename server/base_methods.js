@@ -132,17 +132,24 @@ const _getUserId = async (username) => {
   });
 }
 
-const _shortcodeExists = async (newShortcode) => {
+// from milli to seconds 10 vs. 13
+const trimTimestamp = (timestamp) => {
+  return (timestamp.toString().length === 13)
+    ? timestamp = timestamp / 1000
+    : timestamp;
+}
+
+const _shortcodeExists = async (newShortcode, returnExpiresAt = false) => {
   return new Promise(resolve => {
     pool.query(
-      `SELECT shortcode FROM shortcodes WHERE shortcode = ?`,
+      `SELECT expires_at, shortcode FROM shortcodes WHERE shortcode = ?`,
       [newShortcode],
       (err, res) => {
         if (err) {
           resolve(true);
         } else {
           if (res.length) {
-            resolve(true);
+            resolve(returnExpiresAt ? res[0].expires_at : true);
           } else {
             resolve(false);
           }
@@ -157,9 +164,7 @@ const _generateShortcode = async (username) => {
   
   let timestamp = Date.now();
 
-  if (timestamp.toString().length === 13) { // eg. 13, milliseconds, force to seconds due to int(11)
-    timestamp = timestamp / 1000;
-  }
+  timestamp = trimTimestamp(timestamp);
 
   return new Promise(async (resolve) => {
     // this should almost never happen
@@ -213,9 +218,7 @@ const _getShortcodeByUsername = async (username) => {
         } else {
           let timestamp = Date.now();
 
-          if (timestamp.toString().length === 13) {
-            timestamp = timestamp / 1000;
-          }
+          timestamp = trimTimestamp(timestamp);
 
           if (res.length && res[0].expires_at > timestamp) {
             resolve(res[0].shortcode);
@@ -239,7 +242,18 @@ const getShortCode = async (req, res) => {
   }
 }
 
+const validateShortcode = async (req, res) => {
+  const shortcodeExists = await _shortcodeExists(req.body.shortcode, true);
+
+  if (trimTimestamp(Date.now()) < shortcodeExists) { // bad naming
+    res.status(200).json({msg: true});
+  } else {
+    res.status(200).json({msg: false});
+  }
+}
+
 module.exports = {
   loginUser,
-  getShortCode
+  getShortCode,
+  validateShortcode
 }

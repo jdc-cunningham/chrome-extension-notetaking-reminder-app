@@ -50,7 +50,7 @@ connection.query(
     }
 )
 
-// addresses -- will get modified to include user_id so know which account made what entries
+// shortcodes -- used as quickhand login
 connection.query(
     'CREATE TABLE `shortcodes` (' +
         '`id` int(11) NOT NULL AUTO_INCREMENT,' +
@@ -66,6 +66,23 @@ connection.query(
             return;
         }
     }
+)
+
+// notes
+connection.query(
+  'CREATE TABLE `notes` (' +
+      '`id` int(11) NOT NULL AUTO_INCREMENT,' +
+      '`name` varchar(255) NOT NULL,' +
+      '`body` longtext NOT NULL,' +
+      '`created_at` int(11) NOT NULL,' +
+      'PRIMARY KEY (`id`)' +
+      ') ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci',
+  (error, results, fields) => {
+      if (error) {
+          console.log('error creating table addresses:', error.sqlMessage);
+          return;
+      }
+  }
 )
 
 connection.end();

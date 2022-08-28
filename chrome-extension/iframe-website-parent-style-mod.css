@@ -44,6 +44,6 @@ iframe#cenra-custom {
     left: 0;
     bottom: 0;
     height: 20vh;
-    width: calc(100vw - 16px);
+    width: 100vw;
   }
 }

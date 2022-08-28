@@ -6,7 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
-const { loginUser, getShortCode } = require('./base_methods');
+const { loginUser, getShortCode, validateShortcode } = require('./base_methods');
 
 // CORs
 app.use((req, res, next) => {
@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/login-user', loginUser);
 app.post('/get-shortcode', getShortCode);
+app.post('/validate-shortcode', validateShortcode);
 
 app.listen(port, () => {
   console.log(`App running... on port ${port}`);
