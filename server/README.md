@@ -45,6 +45,10 @@ Way to login
 
 I forgot the deal with the locked out issue, but if I encounter it again I'll write it down here
 
+Reason
+
+Oh yeah, nginx needs +x permission all the way to the base folder.
+
 ### NGINX server block
 
 ```
