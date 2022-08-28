@@ -1,0 +1,26 @@
+{
+  "name": "CENRA",
+  "version": "1.0",
+  "description": "Notetaking app with reminder popup through iFrame",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    "auth-page.js"
+  ],
+  "icons": {
+    "16": "icon16_dark.png",
+    "48": "icon48_dark.png",
+    "128": "icon128_dark.png"
+  },
+  "browser_action": {
+    "default_icon": "icon16_dark.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
