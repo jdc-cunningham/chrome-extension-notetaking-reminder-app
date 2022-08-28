@@ -15,6 +15,7 @@
 const loginForm = document.getElementById('login-form');
 const shortcodeText = document.getElementById('shortcode-text');
 const shortcodeDisplay = document.getElementById('show-shortcode');
+const renewButton = document.getElementById('renew-shortcode-button');
 
 const setupLoginForm = (loginForm, shortcodeDisplay) => {
   const usernameInput = document.getElementById('username');
@@ -44,6 +45,11 @@ const toggleLogin = (shortcode) => {
   if (shortcode) {
     shortcodeText.innerText = shortcode;
     shortcodeDisplay.classList = 'cenra-auth-ui__has-shortcode';
+
+    // if shortcode expires (iframe will notify on requests) then have to relogin, make a new shortcode
+    renewButton.addEventListener('click', () => {
+      chrome.runtime.sendMessage({renew_shortcode: true});
+    });
   } else {
     loginForm.classList = 'cenra-auth-ui__no-shortcode';
     setupLoginForm(loginForm, shortcodeDisplay);
@@ -58,8 +64,6 @@ chrome.runtime.onInstalled.addListener(async () => {
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const msg = request;
 
-  console.log('ui', msg);
-
   if ('shortcode' in msg) { // can be null
     toggleLogin(msg.shortcode);
   }
@@ -72,6 +76,10 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     } else {
       alert('Failed to login');
     }
+  }
+
+  if (msg?.refreshPage) {
+    chrome.runtime.reload(); // this actually closes it but works, also requires closing it after login
   }
 });
 

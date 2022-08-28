@@ -19,7 +19,6 @@ const postAjax = (url, data, success) => {
 const hasShortcode = async () => {
   return new Promise(resolve => {
     chrome.storage.local.get('cenra_shortcode', (result) => {
-      console.log(result);
       if (result?.cenra_shortcode) {
         resolve(result.cenra_shortcode);
       } else {
@@ -67,5 +66,11 @@ chrome.runtime.onMessage.addListener(async (request, sender, callback) => {
 
   if (msg?.login) {
     login(msg.login.username, msg.login.password);
+  }
+
+  if (msg?.renew_shortcode) {
+    chrome.storage.local.remove('cenra_shortcode', (result) => {
+      chrome.runtime.sendMessage({refreshPage: true});
+    });
   }
 });
