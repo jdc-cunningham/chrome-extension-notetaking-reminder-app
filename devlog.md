@@ -17,3 +17,5 @@ Of course who cares... like it's rare. Your entire OS is compromised lol.
 I'll improve this over time.
 
 I forgot that the NANTA chrome extension is buggy, I'll have to fix that/improve it and... actually add the reminder part that I wanted
+
+I'm gonna have to rework this... I got the concept down, it's nasty, I screwed up all the styling and what not ugh
