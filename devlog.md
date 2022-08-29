@@ -15,3 +15,5 @@ Imagine using this thing for years and you realize it was hijacked and the data 
 Of course who cares... like it's rare. Your entire OS is compromised lol.
 
 I'll improve this over time.
+
+I forgot that the NANTA chrome extension is buggy, I'll have to fix that/improve it and... actually add the reminder part that I wanted

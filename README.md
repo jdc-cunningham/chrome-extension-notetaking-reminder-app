@@ -1,6 +1,6 @@
 ### About (local iframe)
 
-<img src="./demo2.gif" width="800"/>
+<img src="./demo2.gif" width="800" style="margin-bottom: 32px;"/>
 
 This injected iframe is using the `popup ui` as the iframe content. It's hitting a local API/DB eg. `http://192...` so it doesn't need all the server setup/website but it's in the other branch.
 
