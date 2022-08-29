@@ -1,3 +1,7 @@
+Add eye icon to the iframe so you can toggle its transparency.
+
+Also a draggable handle to move it.
+
 #### Sunday 08/29/2022
 
 Well... I feel like I went in circles.
