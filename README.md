@@ -16,3 +16,11 @@ Use at your own risk, I've mentioned other vulnerabilities.
 
 It is possible for the iframe to be overlaid by someone else. So they could intercept the iframe interface you're trying to click on/type into. Keep this in mind with iframes in general. This is why the iframe pulsates.
 
+### secure
+
+* https://stackoverflow.com/questions/61446288/chrome-extension-safely-communicate-from-executed-script-to-background-script
+### not secure
+
+* https://blog.ankursundara.com/shadow-dom/
+
+You decide (lol)
