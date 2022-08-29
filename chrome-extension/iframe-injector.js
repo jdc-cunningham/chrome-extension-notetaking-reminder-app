@@ -8,7 +8,7 @@ const iframe = document.createElement('iframe');
 iframeWrapper.id = 'cenra-custom-div';
 iframe.src = chrome.runtime.getURL('./popup-ui/index.html');
 iframe.id = 'cenra-custom';
-iframe.style = 'height: calc(100% - 4px); width: 100%; border: 0;';
+iframe.style = 'height: 100%; width: 100%; border: 0; overflow: hidden;';
 
 iframeShadow.appendChild(iframe);
 
