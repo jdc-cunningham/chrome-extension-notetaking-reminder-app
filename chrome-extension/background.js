@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'http://192.168.1.144:5003';
 
 const postAjax = (url, data, success) => {
   var params = typeof data == 'string' ? data : Object.keys(data).map(
@@ -16,61 +16,53 @@ const postAjax = (url, data, success) => {
   return xhr;
 }
 
-const hasShortcode = async () => {
-  return new Promise(resolve => {
-    chrome.storage.local.get('cenra_shortcode', (result) => {
-      if (result?.cenra_shortcode) {
-        resolve(result.cenra_shortcode);
-      } else {
-        resolve(null);
-      }
-    });
-  });
-}
-
-// returns shortcode to popup ui if successful
-const login = (username, password) => {
-  postAjax(`${API_BASE_URL}/login-user`, {username, password}, (res) => {
-    const response = JSON.parse(res);
-
-    if (response?.shortcode) {
-      chrome.storage.local.set({
-        "cenra_shortcode": response.shortcode
-      });
-
-      chrome.runtime.sendMessage({
-        loggedIn: true,
-        shortcode: response.shortcode
-      });
-    } else {
-      chrome.runtime.sendMessage({
-        loggedIn: false
-      });
-    }
-  });
-}
-
-// run stuff on startup
-chrome.runtime.onInstalled.addListener(async () => {
-  // 
+chrome.runtime.onInstalled.addListener(() => {
+  // run stuff on startup
 });
 
-// listen for messages from popup ui
-chrome.runtime.onMessage.addListener(async (request, sender, callback) => {
+chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const msg = request;
 
-  if (msg?.get_shortcode) {
-    const shortcode = await hasShortcode();
-    chrome.runtime.sendMessage({shortcode})
-  }
-
-  if (msg?.login) {
-    login(msg.login.username, msg.login.password);
-  }
-
-  if (msg?.renew_shortcode) {
-    chrome.storage.local.remove('cenra_shortcode', (result) => {
-      chrome.runtime.sendMessage({refreshPage: true});
+  if (msg?.searchTerm) {
+    postAjax(`${API_BASE_URL}/search-notes`, {noteQueryStr: msg.searchTerm}, (response) => {
+      chrome.runtime.sendMessage({apiResponse: response});
     });
   }
+
+  if (msg?.getNoteBody) {
+    postAjax(`${API_BASE_URL}/get-note-body`, {noteId: msg.getNoteBody}, (response) => {
+      chrome.runtime.sendMessage({apiNoteBodyResponse: response});
+    });
+  }
+
+  if (msg?.updateNote) {
+    const { noteName, noteBody } = msg.updateNote;
+
+    postAjax(
+      `${API_BASE_URL}/save-note`,
+      {
+        noteName,
+        noteBody
+      },
+      (response) => {
+        chrome.runtime.sendMessage({apiNoteBodyUpdateResponse: response});
+      }
+    );
+  }
+
+  if (msg?.deleteNote) {
+    const { noteName } = msg.deleteNote;
+
+    postAjax(
+      `${API_BASE_URL}/delete-note`,
+      {
+        noteName
+      },
+      (response) => {
+        chrome.runtime.sendMessage({apiNoteBodyUpdateResponse: response});
+      }
+    );
+  }
+
+  callback('bg ack');
 });
