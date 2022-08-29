@@ -1,12 +1,12 @@
 ### About (local iframe)
 
+<img src="./demo2.gif" width="800"/>
+
 This injected iframe is using the `popup ui` as the iframe content. It's hitting a local API/DB eg. `http://192...` so it doesn't need all the server setup/website but it's in the other branch.
 
 I did some testing and this seems... secure but I can't guarantee it. I've attached references below.
 
 Use at your own risk, I've mentioned other vulnerabilities.
-
-
 
 ### Features
 
