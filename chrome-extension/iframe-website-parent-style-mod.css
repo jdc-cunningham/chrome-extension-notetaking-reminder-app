@@ -1,4 +1,8 @@
-iframe#cenra-custom {
+div#cenra-custom-div * {
+  box-sizing: border-box;
+}
+
+div#cenra-custom-div {
   position: fixed;
   box-sizing: border-box;
   overflow-y: auto;
@@ -11,14 +15,15 @@ iframe#cenra-custom {
     max-width: 70vw;
   }
 
-  iframe#cenra-custom {
+  div#cenra-custom-div {
     top: 0;
     right: 0;
-    width: calc(30vw - 16px); /* 8px internal margin */
+    width: 30vw;
     height: 100vh;
+    border-left: 1px solid #282828;
   }
 
-  iframe#cenra-custom body {
+  div#cenra-custom-div body {
     margin: 0;
   }
 
@@ -27,8 +32,8 @@ iframe#cenra-custom {
       max-width: 80vw;
     }
   
-    iframe#cenra-custom {
-      width: calc(20vw - 16px);
+    div#cenra-custom-div {
+      width: 20vw;
     }
   }
 }
@@ -39,11 +44,12 @@ iframe#cenra-custom {
     max-height: 80vh;
   }
 
-  iframe#cenra-custom {
+  div#cenra-custom-div {
     top: 80vh;
     left: 0;
     bottom: 0;
     height: 20vh;
     width: 100vw;
+    border-top: 1px solid #282828;
   }
 }
