@@ -136,4 +136,29 @@ body * {
   flex-direction: row;
   width: 100%;
   margin-top: 1rem;
-} 
+}
+
+.recent-notes-row p.date {
+  margin-bottom: 0;
+}
+
+.recent-notes-row p.name {
+  font-size: 1rem;
+  padding-left: 0.125rem;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.recent-notes-row p.name:hover {
+  background-color: #aaa;
+  color: white;
+}
+
+.recent-notes-row p.collapsible {
+  margin-top: -0.75rem;
+  padding-left: 0.5rem;
+}
+
+.recent-notes-row p.collapsed {
+  display: none;
+}

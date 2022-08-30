@@ -2,7 +2,43 @@ Add eye icon to the iframe so you can toggle its transparency.
 
 Also a draggable handle to move it.
 
-#### Sunday 08/29/2022
+#### Monday 08/29/2022
+
+I'm going to modify the CPA API to show recently modified notes and ability to expand them.
+
+Then pull that API output into this chrome extension
+
+Hopefully I can do it I'm pretty spent
+
+Then I have to go back to working with Swift
+
+10:20 PM
+
+I gotta figure out what variant of an API the CPA one is, I built it a while back
+
+Variant as in changes on prod that I did that's not in the repo
+
+Crap thing isn't on a repo, using systemd to run
+
+Finally using grep, systemd file in a weird place, have to remember how to restart deamon
+
+Oof... I don't think the name column is indexed damn... that query took a long time.
+
+No it is indexed... hmm
+
+11:11 PM
+
+took me a bit but found a query that works
+
+https://stackoverflow.com/questions/11937206/sql-query-multiple-columns-using-distinct-on-one-column-only
+
+11:22 PM
+
+cool, now I just gotta add a basic collapsible thing
+
+<img src="./recent-notes.JPG" width="300px" max-width="100%"/>
+
+#### Sunday 08/28/2022
 
 Well... I feel like I went in circles.
 

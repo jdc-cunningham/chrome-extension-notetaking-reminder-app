@@ -17,7 +17,7 @@ const postAjax = (url, data, success) => {
 }
 
 chrome.runtime.onInstalled.addListener(() => {
-  // run stuff on startup
+  // run stuff on startup (when extension refresh icon clicked)
 });
 
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
@@ -62,6 +62,12 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
         chrome.runtime.sendMessage({apiNoteBodyUpdateResponse: response});
       }
     );
+  }
+
+  if (msg?.getRecentNotes) {
+    postAjax(`${API_BASE_URL}/get-recent-notes`, {}, (response) => {
+      chrome.runtime.sendMessage({recentNotes: JSON.parse(response)});
+    });
   }
 
   callback('bg ack');

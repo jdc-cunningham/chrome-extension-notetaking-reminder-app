@@ -1,6 +1,7 @@
 const nantaUi = document.getElementById('nanta-ui');
 const searchInput = document.getElementById('nanta-search-input');
 const display = document.getElementById('nanta-ui-display');
+const recentNotes = document.getElementById('recent-notes');
 
 // generally there should only be 3 calls updating these
 // init and true/false setters
@@ -26,6 +27,15 @@ const dateNowYmd = () => {
 const sanitizeInput = (input) => {
   return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
+
+// need to limit this by time use storage, for now will call it every time
+const getRecentNotes = () => {
+  chrome.runtime.sendMessage({
+    getRecentNotes: true
+  });
+}
+
+getRecentNotes();
 
 searchInput.addEventListener('keyup', (e) => {
   if (searching || updatingNote) return;
@@ -193,5 +203,31 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
         deletingNote = false;
       }
     }, 250);
+  }
+
+  if (msg?.recentNotes) {
+    if (msg.recentNotes?.notes.length) {
+      msg.recentNotes.notes.forEach(note => {
+        recentNotes.innerHTML += `
+        <div class="recent-notes-row">
+          <p class="date">${note.created_at.split('T')[0]}</p>
+          <p class="name">${note.name}</p>
+          <p class="collapsible collapsed">${note.body}</p>
+        </div>
+        `;
+      });
+
+      document.querySelectorAll('.recent-notes-row').forEach(row => {
+        row.addEventListener('click', (e) => {
+          const target = e.target.parentElement.querySelector('.collapsible');
+
+          if (Array.from(target.classList).indexOf('collapsed') !== -1) {
+            target.classList = 'collapsible';
+          } else {
+            target.classList = target.classList + ' collapsed';
+          }
+        });
+      });
+    }
   }
 });
