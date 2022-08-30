@@ -207,6 +207,8 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 
   if (msg?.recentNotes) {
     if (msg.recentNotes?.notes.length) {
+      recentNotes.innerHTML = ''; // clear, variable doesn't work
+
       msg.recentNotes.notes.forEach(note => {
         recentNotes.innerHTML += `
         <div class="recent-notes-row">

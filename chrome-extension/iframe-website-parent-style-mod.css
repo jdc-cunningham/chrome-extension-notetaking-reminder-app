@@ -29,12 +29,22 @@ div#cenra-custom-div {
   }
 
   @media only screen and (min-width: 1920px) {
-    body {
+    body, body * {
       max-width: 80vw;
     }
   
     div#cenra-custom-div {
       width: 20vw;
+    }
+  }
+
+  @media only screen and (max-width: 1920px) {
+    body, body * {
+      max-width: 85vw;
+    }
+  
+    div#cenra-custom-div {
+      width: 15vw;
     }
   }
 }
