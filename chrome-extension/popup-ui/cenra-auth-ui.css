@@ -157,6 +157,7 @@ body * {
 .recent-notes-row p.collapsible {
   margin-top: -0.75rem;
   padding-left: 0.5rem;
+  white-space: pre;
 }
 
 .recent-notes-row p.collapsed {
