@@ -11,6 +11,8 @@ div#cenra-custom-div {
   overflow: hidden;
 }
 
+/* responsive styles */
+
 @media only screen and (orientation: landscape) {
   body, body * {
     max-width: 70vw;

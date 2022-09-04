@@ -2,6 +2,35 @@ Add eye icon to the iframe so you can toggle its transparency.
 
 Also a draggable handle to move it.
 
+#### Sunday 09/04/2022
+
+I have some time I'm going to work on this
+
+There are a few things I want to address:
+
+- hide text input area after modifying
+- toggle to make the thing transparent
+- handle to drag it (draggable)
+- toggle to collapse it/make it small
+  this would reset the width of the website
+- ability to exclude this app from getting injected somewhere or at least
+  get injected in a minimal form
+- make CE icon dark
+
+For the icons they'll be inline with the search area but not sure of what order makes sense
+
+The draggable icon probably would be left-most.
+
+But what about collapse...
+
+2:47 PM
+
+I kinda feel like crap right now/did not sleep very much
+
+3:06 PM
+
+Ehh... I'm spent
+
 #### Monday 08/29/2022
 
 I'm going to modify the CPA API to show recently modified notes and ability to expand them.

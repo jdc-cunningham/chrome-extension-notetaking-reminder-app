@@ -149,7 +149,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   if (msg?.apiNoteBodyResponse) {
     display.classList.remove('has-results');
     display.innerHTML = '';
-    display.innerHTML = `<textarea id="active-note-body" class="nanta-ui__active-note-body"></textarea>`;
+    display.innerHTML = `<textarea id="active-note-body" class="nanta-ui__active-note-body"></textarea><button id="hide-active-note-body-btn" type="button">Hide</button>`;
     const body = document.getElementById('active-note-body');
     body.value = JSON.parse(msg.apiNoteBodyResponse)[0].body; // ehh anti-XSS attempt
 

@@ -163,3 +163,13 @@ body * {
 .recent-notes-row p.collapsed {
   display: none;
 }
+
+/* iframe specific overrides, not popup ui */
+/* this is not working */
+
+iframe .nanta-ui__display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+}
