@@ -2,6 +2,20 @@ Add eye icon to the iframe so you can toggle its transparency.
 
 Also a draggable handle to move it.
 
+#### Wednesday 09/14/2022
+
+I'm in a funk lately, not being productive anywhere
+I just wanted to write a comment about the usage of this thing
+At this moment I have disabled it everywhere I've applied it until I make the transparent/moveable mods.
+
+It messes up some websites like YouTube the video player is partially blocked.
+
+The other thing is... even though it's in my face, I don't interact with it which is interesting
+
+I think I need it to blink or something to get my attention or popup on some schedule vs. always being there where it blends in with the background
+
+I just expect it to be there
+
 #### Sunday 09/04/2022
 
 I have some time I'm going to work on this
